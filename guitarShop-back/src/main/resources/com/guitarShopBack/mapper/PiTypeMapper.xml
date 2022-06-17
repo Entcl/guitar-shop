@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guitarShopBack.mapper.PiTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.guitarShopBack.pojo.PiType" >
+    <id column="pt_id" property="ptId" jdbcType="INTEGER" />
+    <result column="pt_name" property="ptName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pt_id, pt_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guitarShopBack.pojo.PiTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pi_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pi_type
+    where pt_id = #{ptId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pi_type
+    where pt_id = #{ptId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guitarShopBack.pojo.PiTypeExample" >
+    delete from pi_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guitarShopBack.pojo.PiType" >
+    insert into pi_type (pt_id, pt_name)
+    values (#{ptId,jdbcType=INTEGER}, #{ptName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guitarShopBack.pojo.PiType" >
+    insert into pi_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ptId != null" >
+        pt_id,
+      </if>
+      <if test="ptName != null" >
+        pt_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ptId != null" >
+        #{ptId,jdbcType=INTEGER},
+      </if>
+      <if test="ptName != null" >
+        #{ptName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guitarShopBack.pojo.PiTypeExample" resultType="java.lang.Integer" >
+    select count(*) from pi_type
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pi_type
+    <set >
+      <if test="record.ptId != null" >
+        pt_id = #{record.ptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.ptName != null" >
+        pt_name = #{record.ptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pi_type
+    set pt_id = #{record.ptId,jdbcType=INTEGER},
+      pt_name = #{record.ptName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guitarShopBack.pojo.PiType" >
+    update pi_type
+    <set >
+      <if test="ptName != null" >
+        pt_name = #{ptName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pt_id = #{ptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guitarShopBack.pojo.PiType" >
+    update pi_type
+    set pt_name = #{ptName,jdbcType=VARCHAR}
+    where pt_id = #{ptId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guitarShopBack.mapper.UserLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.guitarShopBack.pojo.UserLogin" >
+    <id column="ul_id" property="ulId" jdbcType="BIGINT" />
+    <result column="ul_name" property="ulName" jdbcType="VARCHAR" />
+    <result column="ul_password" property="ulPassword" jdbcType="VARCHAR" />
+    <result column="ul_type" property="ulType" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ul_id, ul_name, ul_password, ul_type
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guitarShopBack.pojo.UserLoginExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_login
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_login
+    where ul_id = #{ulId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_login
+    where ul_id = #{ulId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guitarShopBack.pojo.UserLoginExample" >
+    delete from user_login
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guitarShopBack.pojo.UserLogin" >
+    insert into user_login (ul_id, ul_name, ul_password, 
+      ul_type)
+    values (#{ulId,jdbcType=BIGINT}, #{ulName,jdbcType=VARCHAR}, #{ulPassword,jdbcType=VARCHAR}, 
+      #{ulType,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guitarShopBack.pojo.UserLogin" >
+    insert into user_login
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ulId != null" >
+        ul_id,
+      </if>
+      <if test="ulName != null" >
+        ul_name,
+      </if>
+      <if test="ulPassword != null" >
+        ul_password,
+      </if>
+      <if test="ulType != null" >
+        ul_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ulId != null" >
+        #{ulId,jdbcType=BIGINT},
+      </if>
+      <if test="ulName != null" >
+        #{ulName,jdbcType=VARCHAR},
+      </if>
+      <if test="ulPassword != null" >
+        #{ulPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="ulType != null" >
+        #{ulType,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guitarShopBack.pojo.UserLoginExample" resultType="java.lang.Integer" >
+    select count(*) from user_login
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_login
+    <set >
+      <if test="record.ulId != null" >
+        ul_id = #{record.ulId,jdbcType=BIGINT},
+      </if>
+      <if test="record.ulName != null" >
+        ul_name = #{record.ulName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ulPassword != null" >
+        ul_password = #{record.ulPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ulType != null" >
+        ul_type = #{record.ulType,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_login
+    set ul_id = #{record.ulId,jdbcType=BIGINT},
+      ul_name = #{record.ulName,jdbcType=VARCHAR},
+      ul_password = #{record.ulPassword,jdbcType=VARCHAR},
+      ul_type = #{record.ulType,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guitarShopBack.pojo.UserLogin" >
+    update user_login
+    <set >
+      <if test="ulName != null" >
+        ul_name = #{ulName,jdbcType=VARCHAR},
+      </if>
+      <if test="ulPassword != null" >
+        ul_password = #{ulPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="ulType != null" >
+        ul_type = #{ulType,jdbcType=BIT},
+      </if>
+    </set>
+    where ul_id = #{ulId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guitarShopBack.pojo.UserLogin" >
+    update user_login
+    set ul_name = #{ulName,jdbcType=VARCHAR},
+      ul_password = #{ulPassword,jdbcType=VARCHAR},
+      ul_type = #{ulType,jdbcType=BIT}
+    where ul_id = #{ulId,jdbcType=BIGINT}
+  </update>
+</mapper>

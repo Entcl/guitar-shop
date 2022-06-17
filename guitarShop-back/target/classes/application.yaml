@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/guitarshop?characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    #mapper xml文件地址
+    mybatis:
+      mapper-locations:classpath*:com.guitarshopback.mapper/*.xml
+
+server:
+  port: 9090

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guitarShopBack.mapper.UserInfomationMapper" >
+  <resultMap id="BaseResultMap" type="com.guitarShopBack.pojo.UserInfomation" >
+    <id column="ui_id" property="uiId" jdbcType="INTEGER" />
+    <result column="ui_name" property="uiName" jdbcType="VARCHAR" />
+    <result column="ui_address" property="uiAddress" jdbcType="VARCHAR" />
+    <result column="ui_phone" property="uiPhone" jdbcType="VARCHAR" />
+    <result column="ui_zip" property="uiZip" jdbcType="INTEGER" />
+    <result column="ui_email" property="uiEmail" jdbcType="VARCHAR" />
+    <result column="ul_id" property="ulId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.guitarShopBack.pojo.UserInfomation" extends="BaseResultMap" >
+    <result column="ui_avatar" property="uiAvatar" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ui_id, ui_name, ui_address, ui_phone, ui_zip, ui_email, ul_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    ui_avatar
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.guitarShopBack.pojo.UserInfomationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user_infomation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guitarShopBack.pojo.UserInfomationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_infomation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user_infomation
+    where ui_id = #{uiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_infomation
+    where ui_id = #{uiId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guitarShopBack.pojo.UserInfomationExample" >
+    delete from user_infomation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guitarShopBack.pojo.UserInfomation" >
+    insert into user_infomation (ui_id, ui_name, ui_address, 
+      ui_phone, ui_zip, ui_email, 
+      ul_id, ui_avatar)
+    values (#{uiId,jdbcType=INTEGER}, #{uiName,jdbcType=VARCHAR}, #{uiAddress,jdbcType=VARCHAR}, 
+      #{uiPhone,jdbcType=VARCHAR}, #{uiZip,jdbcType=INTEGER}, #{uiEmail,jdbcType=VARCHAR}, 
+      #{ulId,jdbcType=BIGINT}, #{uiAvatar,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guitarShopBack.pojo.UserInfomation" >
+    insert into user_infomation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uiId != null" >
+        ui_id,
+      </if>
+      <if test="uiName != null" >
+        ui_name,
+      </if>
+      <if test="uiAddress != null" >
+        ui_address,
+      </if>
+      <if test="uiPhone != null" >
+        ui_phone,
+      </if>
+      <if test="uiZip != null" >
+        ui_zip,
+      </if>
+      <if test="uiEmail != null" >
+        ui_email,
+      </if>
+      <if test="ulId != null" >
+        ul_id,
+      </if>
+      <if test="uiAvatar != null" >
+        ui_avatar,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uiId != null" >
+        #{uiId,jdbcType=INTEGER},
+      </if>
+      <if test="uiName != null" >
+        #{uiName,jdbcType=VARCHAR},
+      </if>
+      <if test="uiAddress != null" >
+        #{uiAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uiPhone != null" >
+        #{uiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uiZip != null" >
+        #{uiZip,jdbcType=INTEGER},
+      </if>
+      <if test="uiEmail != null" >
+        #{uiEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="ulId != null" >
+        #{ulId,jdbcType=BIGINT},
+      </if>
+      <if test="uiAvatar != null" >
+        #{uiAvatar,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guitarShopBack.pojo.UserInfomationExample" resultType="java.lang.Integer" >
+    select count(*) from user_infomation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_infomation
+    <set >
+      <if test="record.uiId != null" >
+        ui_id = #{record.uiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uiName != null" >
+        ui_name = #{record.uiName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uiAddress != null" >
+        ui_address = #{record.uiAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uiPhone != null" >
+        ui_phone = #{record.uiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uiZip != null" >
+        ui_zip = #{record.uiZip,jdbcType=INTEGER},
+      </if>
+      <if test="record.uiEmail != null" >
+        ui_email = #{record.uiEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ulId != null" >
+        ul_id = #{record.ulId,jdbcType=BIGINT},
+      </if>
+      <if test="record.uiAvatar != null" >
+        ui_avatar = #{record.uiAvatar,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update user_infomation
+    set ui_id = #{record.uiId,jdbcType=INTEGER},
+      ui_name = #{record.uiName,jdbcType=VARCHAR},
+      ui_address = #{record.uiAddress,jdbcType=VARCHAR},
+      ui_phone = #{record.uiPhone,jdbcType=VARCHAR},
+      ui_zip = #{record.uiZip,jdbcType=INTEGER},
+      ui_email = #{record.uiEmail,jdbcType=VARCHAR},
+      ul_id = #{record.ulId,jdbcType=BIGINT},
+      ui_avatar = #{record.uiAvatar,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_infomation
+    set ui_id = #{record.uiId,jdbcType=INTEGER},
+      ui_name = #{record.uiName,jdbcType=VARCHAR},
+      ui_address = #{record.uiAddress,jdbcType=VARCHAR},
+      ui_phone = #{record.uiPhone,jdbcType=VARCHAR},
+      ui_zip = #{record.uiZip,jdbcType=INTEGER},
+      ui_email = #{record.uiEmail,jdbcType=VARCHAR},
+      ul_id = #{record.ulId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guitarShopBack.pojo.UserInfomation" >
+    update user_infomation
+    <set >
+      <if test="uiName != null" >
+        ui_name = #{uiName,jdbcType=VARCHAR},
+      </if>
+      <if test="uiAddress != null" >
+        ui_address = #{uiAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="uiPhone != null" >
+        ui_phone = #{uiPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="uiZip != null" >
+        ui_zip = #{uiZip,jdbcType=INTEGER},
+      </if>
+      <if test="uiEmail != null" >
+        ui_email = #{uiEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="ulId != null" >
+        ul_id = #{ulId,jdbcType=BIGINT},
+      </if>
+      <if test="uiAvatar != null" >
+        ui_avatar = #{uiAvatar,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ui_id = #{uiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.guitarShopBack.pojo.UserInfomation" >
+    update user_infomation
+    set ui_name = #{uiName,jdbcType=VARCHAR},
+      ui_address = #{uiAddress,jdbcType=VARCHAR},
+      ui_phone = #{uiPhone,jdbcType=VARCHAR},
+      ui_zip = #{uiZip,jdbcType=INTEGER},
+      ui_email = #{uiEmail,jdbcType=VARCHAR},
+      ul_id = #{ulId,jdbcType=BIGINT},
+      ui_avatar = #{uiAvatar,jdbcType=LONGVARCHAR}
+    where ui_id = #{uiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guitarShopBack.pojo.UserInfomation" >
+    update user_infomation
+    set ui_name = #{uiName,jdbcType=VARCHAR},
+      ui_address = #{uiAddress,jdbcType=VARCHAR},
+      ui_phone = #{uiPhone,jdbcType=VARCHAR},
+      ui_zip = #{uiZip,jdbcType=INTEGER},
+      ui_email = #{uiEmail,jdbcType=VARCHAR},
+      ul_id = #{ulId,jdbcType=BIGINT}
+    where ui_id = #{uiId,jdbcType=INTEGER}
+  </update>
+</mapper>

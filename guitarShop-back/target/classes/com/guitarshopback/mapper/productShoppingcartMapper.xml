@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guitarShopBack.mapper.productShoppingcartMapper" >
+  <resultMap id="BaseResultMap" type="com.guitarShopBack.pojo.productShoppingcart" >
+    <id column="ps_id" property="psId" jdbcType="BIGINT" />
+    <result column="pi_id" property="piId" jdbcType="BIGINT" />
+    <result column="pi_price" property="piPrice" jdbcType="DOUBLE" />
+    <result column="pi_amount" property="piAmount" jdbcType="INTEGER" />
+    <result column="pm_id" property="pmId" jdbcType="BIGINT" />
+    <result column="pm_name" property="pmName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ps_id, pi_id, pi_price, pi_amount, pm_id, pm_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guitarShopBack.pojo.productShoppingcartExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_shoppingcart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_shoppingcart
+    where ps_id = #{psId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from product_shoppingcart
+    where ps_id = #{psId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guitarShopBack.pojo.productShoppingcartExample" >
+    delete from product_shoppingcart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guitarShopBack.pojo.productShoppingcart" >
+    insert into product_shoppingcart (ps_id, pi_id, pi_price, 
+      pi_amount, pm_id, pm_name
+      )
+    values (#{psId,jdbcType=BIGINT}, #{piId,jdbcType=BIGINT}, #{piPrice,jdbcType=DOUBLE}, 
+      #{piAmount,jdbcType=INTEGER}, #{pmId,jdbcType=BIGINT}, #{pmName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.guitarShopBack.pojo.productShoppingcart" >
+    insert into product_shoppingcart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="psId != null" >
+        ps_id,
+      </if>
+      <if test="piId != null" >
+        pi_id,
+      </if>
+      <if test="piPrice != null" >
+        pi_price,
+      </if>
+      <if test="piAmount != null" >
+        pi_amount,
+      </if>
+      <if test="pmId != null" >
+        pm_id,
+      </if>
+      <if test="pmName != null" >
+        pm_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="psId != null" >
+        #{psId,jdbcType=BIGINT},
+      </if>
+      <if test="piId != null" >
+        #{piId,jdbcType=BIGINT},
+      </if>
+      <if test="piPrice != null" >
+        #{piPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="piAmount != null" >
+        #{piAmount,jdbcType=INTEGER},
+      </if>
+      <if test="pmId != null" >
+        #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="pmName != null" >
+        #{pmName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guitarShopBack.pojo.productShoppingcartExample" resultType="java.lang.Integer" >
+    select count(*) from product_shoppingcart
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product_shoppingcart
+    <set >
+      <if test="record.psId != null" >
+        ps_id = #{record.psId,jdbcType=BIGINT},
+      </if>
+      <if test="record.piId != null" >
+        pi_id = #{record.piId,jdbcType=BIGINT},
+      </if>
+      <if test="record.piPrice != null" >
+        pi_price = #{record.piPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.piAmount != null" >
+        pi_amount = #{record.piAmount,jdbcType=INTEGER},
+      </if>
+      <if test="record.pmId != null" >
+        pm_id = #{record.pmId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pmName != null" >
+        pm_name = #{record.pmName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product_shoppingcart
+    set ps_id = #{record.psId,jdbcType=BIGINT},
+      pi_id = #{record.piId,jdbcType=BIGINT},
+      pi_price = #{record.piPrice,jdbcType=DOUBLE},
+      pi_amount = #{record.piAmount,jdbcType=INTEGER},
+      pm_id = #{record.pmId,jdbcType=BIGINT},
+      pm_name = #{record.pmName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guitarShopBack.pojo.productShoppingcart" >
+    update product_shoppingcart
+    <set >
+      <if test="piId != null" >
+        pi_id = #{piId,jdbcType=BIGINT},
+      </if>
+      <if test="piPrice != null" >
+        pi_price = #{piPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="piAmount != null" >
+        pi_amount = #{piAmount,jdbcType=INTEGER},
+      </if>
+      <if test="pmId != null" >
+        pm_id = #{pmId,jdbcType=BIGINT},
+      </if>
+      <if test="pmName != null" >
+        pm_name = #{pmName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ps_id = #{psId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guitarShopBack.pojo.productShoppingcart" >
+    update product_shoppingcart
+    set pi_id = #{piId,jdbcType=BIGINT},
+      pi_price = #{piPrice,jdbcType=DOUBLE},
+      pi_amount = #{piAmount,jdbcType=INTEGER},
+      pm_id = #{pmId,jdbcType=BIGINT},
+      pm_name = #{pmName,jdbcType=VARCHAR}
+    where ps_id = #{psId,jdbcType=BIGINT}
+  </update>
+</mapper>
