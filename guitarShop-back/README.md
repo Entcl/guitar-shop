@@ -36,15 +36,15 @@
 
 user_infomation
 
-![image-20220617155509291](.\md-img\image-20220617155407873.png)
+![image-20220617155509291](md-img\image-20220617155407873.png)
 
 user_infomation
 
-![image-20220617155554091](.\md-img\image-20220617155554091.png)
+![image-20220617155554091](md-img\image-20220617155554091.png)
 
 剩余表（功能完成会将数据库文件导出）：
 
-![image-20220617160004484](.\md-img\image-20220617160004484.png)
+![image-20220617160004484](md-img\image-20220617160004484.png)
 
 
 

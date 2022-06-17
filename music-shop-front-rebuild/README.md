@@ -61,7 +61,7 @@ axios（封装了请求/响应拦截器、发送模块）
 
 轮播图（鼠标悬停停止轮播）
 
-![image-20220617143103687](.\md-img\image-20220617143103687.png)![image-20220617144520931](.\md-img\image-20220617144520931.png)
+![image-20220617143103687](md-img\image-20220617143103687.png)![image-20220617144520931](md-img\image-20220617144520931.png)
 
 
 
@@ -88,18 +88,18 @@ post：ushoppingCartController/没想好
 
 <strong>总价计算：</strong>
 
-![image-20220617143232476](.\md-img\image-20220617143232476.png)
+![image-20220617143232476](md-img\image-20220617143232476.png)
 
-![image-20220617143512509](.\md-img\image-20220617143512509.png)
+![image-20220617143512509](md-img\image-20220617143512509.png)
 
 ### 购买以及删除等功能：
 
-![image-20220617143851030](.\md-img\image-20220617143851030.png)
+![image-20220617143851030](md-img\image-20220617143851030.png)
 
-![image-20220617143920077](.\md-img\image-20220617143920077.png)
+![image-20220617143920077](md-img\image-20220617143920077.png)
 <strong>清空购物车/删除单个商品功能：</strong>
 
-![image-20220617144136619](.\md-img\image-20220617144136619.png)![image-20220617144307525](.\md-img\image-20220617144307525.png)
+![image-20220617144136619](md-img\image-20220617144136619.png)![image-20220617144307525](md-img\image-20220617144307525.png)
 
 
 
@@ -121,11 +121,11 @@ post：userinfomationController/没想好
 <strong>界面： </strong>
 
 如图所示，后期实现数据动态绑定
-![image-20220617145334835](.\md-img\image-20220617145334835.png)
+![image-20220617145334835](md-img\image-20220617145334835.png)
 
 ### 发送验证码等待
-![image-20220617145902123](.\md-img\image-20220617145902123.png)
-![image-20220617145919258](.\md-img\image-20220617145919258.png)
+![image-20220617145902123](md-img\image-20220617145902123.png)
+![image-20220617145919258](md-img\image-20220617145919258.png)
 
 
 
@@ -148,7 +148,7 @@ post：TestController/user2
 
 接口测试结果：
 
-![image-20220617151932388](.\md-img\image-20220617151932388.png)
+![image-20220617151932388](md-img\image-20220617151932388.png)
 
 
 
@@ -228,8 +228,8 @@ productInfomationController/queryAllProductById
 
 预计实现效果如图
 
-![image-20220617151014947](.\md-img\image-20220617151014947.png)
+![image-20220617151014947](md-img\image-20220617151014947.png)
 
 
 
-![image-20220617151322598](.\md-img\image-20220617151322598.png)
+![image-20220617151322598](md-img\image-20220617151322598.png)
