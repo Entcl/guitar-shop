@@ -1,4 +1,4 @@
-# guitar-shop
+# guitar-shop（学习用！）
 
 ## 目录结构（目录内有详细的说明）
 
