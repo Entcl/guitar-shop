@@ -12,6 +12,8 @@ import ShopIndex from '@/components/shop/ShopIndex';
 import AdminIndex from '@/components/admin/AdminIndex';
 import ShoppingCart from '@/components/shop/shoppingcart/ShoppingCart';
 import PersonalInfomation from '@/components/shop/personalinfomation/PersonalInfomation';
+import LoginPage from '@/components/LoginPage'
+
 
 export default new Router({
     // mode: history,
@@ -59,6 +61,11 @@ export default new Router({
             name: 'PersonalInfomation',
             path: '/infomation',
             component: PersonalInfomation
+        },
+        {
+            name: 'LoginPage',
+            path: '/loginandregisiter',
+            component: LoginPage
         },
     ]
 

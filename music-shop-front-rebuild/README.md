@@ -1,5 +1,7 @@
 # music-shop-front-rebuild(音乐商城)(更新中)
 
+<strong>主页如果出问题的话可查看下方的预览效果，其他页面可正常使用</strong>
+
 ~~ 项目地址:暂时没有 ~~
 
 ~~ 后端地址:暂时没有 ~~
@@ -49,13 +51,35 @@ axios（封装了请求/响应拦截器、发送模块）
 
 <br>
 
+### 登录界面
+
+<strong>完成情况：</strong>
+
+界面：LoginPage
+
+<br>
+
+接口：
+
+get：TestController/user
+
+post：TestController/user2
+
+接口测试结果：
+
+![image-20220619163214134](md-img/image-20220619163214134.png)
+
+
+
+
+<hr>
 ### 商城主页：
 
 <strong>完成情况：</strong>
 
 <strong>接口：</strong>
 
-(未实现)UserLoginController/login
+UserLoginController/login
 
 <br>
 
@@ -63,9 +87,9 @@ axios（封装了请求/响应拦截器、发送模块）
 
 轮播图（鼠标悬停停止轮播）
 
-![image-20220617143103687](md-img/image-20220617143103687.png)![image-20220617144520931](md-img/image-20220617144520931.png)
+![image-20220619160530717](md-img/image-20220619160530717.png)
 
-
+![image-20220619160445486](md-img/image-20220619160445486.png)
 
 
 
@@ -82,7 +106,7 @@ axios（封装了请求/响应拦截器、发送模块）
 
 get：shoppingCartController/没想好(不一定写)
 
-post：ushoppingCartController/没想好
+post：shoppingCartController/没想好叫啥名
 
 <br>
 
@@ -116,7 +140,7 @@ post：ushoppingCartController/没想好
 
 get：userinfomationController/没想好(不一定写)
 
-post：userinfomationController/没想好
+post：userinfomationController/没想好叫啥名
 
 <br>
 
@@ -128,30 +152,6 @@ post：userinfomationController/没想好
 ### 发送验证码等待
 ![image-20220617145902123](md-img/image-20220617145902123.png)
 ![image-20220617145919258](md-img/image-20220617145919258.png)
-
-
-
-<hr>
-
-
-### 登录界面
-
-<strong>完成情况：</strong>
-
-界面：没写
-
-<br>
-
-接口：
-
-get：TestController/user
-
-post：TestController/user2
-
-接口测试结果：
-
-![image-20220617151932388](md-img/image-20220617151932388.png)
-
 
 
 

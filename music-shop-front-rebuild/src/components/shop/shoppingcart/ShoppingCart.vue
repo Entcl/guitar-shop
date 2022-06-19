@@ -75,29 +75,29 @@ export default {
             deep: true,
             allcheck: false,
             tableData: [{
-                date: '2016-05-03',
-                name: '王小虎',
+                date: 'picurl1',
+                name: 'shopname1',
                 address: '上海市普陀区金沙江路 1518 弄',
                 shopPrice: 10,
                 shopNumber: 1
             },
             {
-                date: '2016-05-02',
-                name: '王小虎',
+                date: 'picurl2',
+                name: 'shopname2',
                 address: '上海市普陀区金沙江路 1518 弄',
                 shopPrice: 20,
                 shopNumber: 2
             },
             {
-                date: '2016-05-04',
-                name: '王小虎',
+                date: 'picurl3',
+                name: 'shopname3',
                 address: '上海市普陀区金沙江路 1518 弄',
                 shopPrice: 30,
                 shopNumber: 3
             },
             {
-                date: '2016-05-01',
-                name: '王小虎',
+                date: 'picurl4',
+                name: 'shopname4',
                 address: '上海市普陀区金沙江路 1518 弄',
                 shopPrice: 40,
                 shopNumber: 4
@@ -123,8 +123,10 @@ export default {
 
         // 删除按钮
         handleDelete(index, row) {
-            console.log(row.data);
-            this.tableData.splice(index)
+            // let length = console.log(this.tableData.length);
+            // console.log(row);
+            // console.log(index);
+            this.tableData.splice(index,1);
         },
 
         // console.log("单价：" + shopPrice, "数量：" + shopNumber);
@@ -139,7 +141,7 @@ export default {
             router.push('/')
         },
         testaaa() {
-            console.log(this.multipleSelection.shopNumber);
+            console.log(this.multipleSelection);
         },
         // 切换选择状态
         toggleSelection(rows) {
@@ -162,6 +164,8 @@ export default {
             console.log("购买对象", this.multipleSelection, "总价：" + this.countAllPrice);
         },
         clearShop() {
+            let length = console.log(this.tableData.length);
+            this.tableData.splice(length);
             console.log("清空购物车");
         },
     },
