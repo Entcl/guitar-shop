@@ -1,4 +1,4 @@
-# music-shop-front-rebuild(音乐商城)
+# music-shop-front-rebuild(音乐商城)(更新中)
 
 ~~ 项目地址:暂时没有 ~~
 
