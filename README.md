@@ -6,6 +6,8 @@
 
 地址：
 
+预览地址：https://entcl.github.io/guitar-shop/dist/#/
+
 <br>
 
 后端文件为：guitarShop-back
