@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="header">
+        <div class="header" style="height: 70px;">
             <el-row>
                 <!-- user-btn -->
                 <el-col :span="8">
@@ -54,6 +54,7 @@
                         </el-input>
                     </div>
 
+                    <!-- logo -->
                     <div class="logo" style="">
                         <router-link to="/" style="text-decoration: none;">
                             <div style="color: rgb(34, 34, 34);" class="newPrimaryTitle">
@@ -171,11 +172,11 @@ export default {
 }
 
 .logo {
-    position: absolute;
-    top: 15px;
+    position: relative;
+    top: -38px;
     /* font-family: ; */
     font-size: 25px;
-    left: 1100px;
+    left: 450px;
 
 }
 
