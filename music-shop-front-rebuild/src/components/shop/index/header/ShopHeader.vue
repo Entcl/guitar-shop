@@ -124,7 +124,7 @@ export default {
     data() {
         return {
             // UserName: "this.$route.params.UserName",
-            UserName: "this.asd",
+            UserName: "this.UserName",
             num: 0,
             value: "",
             activeIndex: '1',
